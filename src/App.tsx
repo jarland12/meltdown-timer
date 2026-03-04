@@ -174,17 +174,17 @@ const Timer = ({ onDelete }: TimerProps) => {
             {formatTime(time)}
           </div>
 
-          <div className="flex flex-col gap-2 justify-center bg-indigo-950/60 p-2 sm:p-3 rounded-xl border border-indigo-800/50">
+          <div className="flex flex-col gap-2 justify-center bg-indigo-950/60 p-2 rounded-xl border border-indigo-800/50">
             {!isRunning ? (
-              <button onClick={startTimer} disabled={time === 0} className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center rounded-xl bg-cyan-700 text-white hover:bg-cyan-600 transition-colors disabled:opacity-50 disabled:bg-indigo-900 border border-cyan-500 shadow-md">
+              <button onClick={startTimer} disabled={time === 0} className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-lg bg-cyan-700 text-white hover:bg-cyan-600 transition-colors disabled:opacity-50 disabled:bg-indigo-900 border border-cyan-500 shadow-sm">
                 <PlayIcon />
               </button>
             ) : (
-              <button onClick={stopTimer} className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center rounded-xl bg-amber-600 text-white hover:bg-amber-500 transition-colors border border-amber-400 shadow-md">
+              <button onClick={stopTimer} className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-lg bg-amber-600 text-white hover:bg-amber-500 transition-colors border border-amber-400 shadow-sm">
                 <PauseIcon />
               </button>
             )}
-            <button onClick={onDelete} className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center rounded-xl bg-red-900/90 text-red-200 hover:bg-red-700 hover:text-white transition-colors border border-red-700 shadow-md">
+            <button onClick={onDelete} className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-lg bg-red-900/90 text-red-200 hover:bg-red-700 hover:text-white transition-colors border border-red-700 shadow-sm">
               <TrashIcon />
             </button>
           </div>
@@ -291,17 +291,17 @@ const Stopwatch = ({ onDelete }: StopwatchProps) => {
             {formatTime(time)}
           </div>
 
-          <div className="flex flex-col gap-2 justify-center bg-indigo-950/60 p-2 sm:p-3 rounded-xl border border-indigo-800/50">
+          <div className="flex flex-col gap-2 justify-center bg-indigo-950/60 p-2 rounded-xl border border-indigo-800/50">
             {!isRunning ? (
-              <button onClick={startStopwatch} className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center rounded-xl bg-green-700 text-white hover:bg-green-600 transition-colors border border-green-500 shadow-md">
+              <button onClick={startStopwatch} className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-lg bg-green-700 text-white hover:bg-green-600 transition-colors border border-green-500 shadow-sm">
                 <PlayIcon />
               </button>
             ) : (
-              <button onClick={stopStopwatch} className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center rounded-xl bg-amber-600 text-white hover:bg-amber-500 transition-colors border border-amber-400 shadow-md">
+              <button onClick={stopStopwatch} className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-lg bg-amber-600 text-white hover:bg-amber-500 transition-colors border border-amber-400 shadow-sm">
                 <PauseIcon />
               </button>
             )}
-            <button onClick={onDelete} className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center rounded-xl bg-red-900/90 text-red-200 hover:bg-red-700 hover:text-white transition-colors border border-red-700 shadow-md">
+            <button onClick={onDelete} className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-lg bg-red-900/90 text-red-200 hover:bg-red-700 hover:text-white transition-colors border border-red-700 shadow-sm">
               <TrashIcon />
             </button>
           </div>
