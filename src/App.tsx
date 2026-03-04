@@ -186,9 +186,9 @@ const Timer = ({ onDelete }: TimerProps) => {
       </div>
 
       {/* VISTA MINIMIZADA (NÚMEROS SOLOS) */}
-      <div className={`transition-all duration-300 overflow-hidden ${isMinimized ? 'opacity-100 max-h-[300px] mt-2' : 'opacity-0 max-h-0'}`}>
-        <div className="flex flex-row items-center justify-center bg-black/40 p-4 rounded-xl border border-indigo-800/50">
-          <div className={`font-mono font-black tracking-tighter tabular-nums ${timerDisplayColor} text-6xl sm:text-8xl lg:text-9xl leading-none text-center`}>
+      <div className={`transition-all duration-300 overflow-hidden ${isMinimized ? 'opacity-100 max-h-[200px] mt-2' : 'opacity-0 max-h-0'}`}>
+        <div className="flex flex-row items-center justify-center bg-black/40 p-2 sm:p-3 rounded-xl border border-indigo-800/50">
+          <div className={`font-mono font-black tracking-tighter tabular-nums ${timerDisplayColor} text-4xl sm:text-6xl lg:text-7xl leading-none text-center`}>
             {formatTime(time)}
           </div>
         </div>
@@ -219,8 +219,8 @@ const Timer = ({ onDelete }: TimerProps) => {
           </div>
         </div>
 
-        <div className={`text-center mb-5 p-4 sm:p-5 rounded-xl border-2 ${isWarning ? `bg-black/60 border-red-600` : 'bg-black/50 border-indigo-800'}`}>
-          <div className={`font-mono text-5xl sm:text-6xl lg:text-7xl font-black tracking-tighter tabular-nums leading-none ${timerDisplayColor}`}>
+        <div className={`text-center mb-4 p-3 sm:p-4 rounded-xl border-2 ${isWarning ? `bg-black/60 border-red-600` : 'bg-black/50 border-indigo-800'}`}>
+          <div className={`font-mono text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter tabular-nums leading-none ${timerDisplayColor}`}>
             {formatTime(time)}
           </div>
         </div>
@@ -306,9 +306,9 @@ const Stopwatch = ({ onDelete }: StopwatchProps) => {
       </div>
 
       {/* VISTA MINIMIZADA (NÚMEROS SOLOS) */}
-      <div className={`transition-all duration-300 overflow-hidden ${isMinimized ? 'opacity-100 max-h-[300px] mt-2' : 'opacity-0 max-h-0'}`}>
-        <div className="flex flex-row items-center justify-center bg-black/40 p-4 rounded-xl border border-indigo-800/50">
-          <div className="font-mono font-black tracking-tighter tabular-nums text-green-400 text-6xl sm:text-8xl lg:text-9xl leading-none text-center">
+      <div className={`transition-all duration-300 overflow-hidden ${isMinimized ? 'opacity-100 max-h-[200px] mt-2' : 'opacity-0 max-h-0'}`}>
+        <div className="flex flex-row items-center justify-center bg-black/40 p-2 sm:p-3 rounded-xl border border-indigo-800/50">
+          <div className="font-mono font-black tracking-tighter tabular-nums text-green-400 text-4xl sm:text-6xl lg:text-7xl leading-none text-center">
             {formatTime(time)}
           </div>
         </div>
@@ -324,8 +324,8 @@ const Stopwatch = ({ onDelete }: StopwatchProps) => {
           className="w-full mb-4 p-3 bg-indigo-950/90 border border-indigo-700/80 rounded-lg text-indigo-100 text-base sm:text-lg font-bold uppercase placeholder-indigo-500 focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all text-center tracking-wider shadow-inner"
         />
 
-        <div className="text-center mb-5 p-4 sm:p-5 rounded-xl border-2 bg-black/50 border-indigo-800 shadow-inner">
-          <div className="font-mono text-5xl sm:text-6xl lg:text-7xl font-black tracking-tighter tabular-nums leading-none text-green-400">
+        <div className="text-center mb-4 p-3 sm:p-4 rounded-xl border-2 bg-black/50 border-indigo-800 shadow-inner">
+          <div className="font-mono text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter tabular-nums leading-none text-green-400">
             {formatTime(time)}
           </div>
         </div>
