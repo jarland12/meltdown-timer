@@ -154,39 +154,42 @@ const Timer = ({ onDelete }: TimerProps) => {
       )}
 
       {/* Encabezado del Temporizador */}
-      <div className="flex justify-between items-center mb-3">
-        <div className="font-bold text-indigo-200 truncate pr-4 flex-grow text-lg sm:text-2xl tracking-wide uppercase">
+      <div className="flex justify-between items-center mb-3 gap-2">
+        <div className="font-bold text-indigo-200 truncate pr-2 flex-grow text-base sm:text-xl tracking-wide uppercase">
           {name || "TEMPORIZADOR"}
         </div>
+
+        {/* Controles en el encabezado (visibles solo cuando está minimizado) */}
+        {isMinimized && (
+          <div className="flex flex-row gap-1 sm:gap-2 justify-center bg-indigo-950/40 p-1 sm:p-1.5 rounded-lg border border-indigo-800/30">
+            {!isRunning ? (
+              <button onClick={startTimer} disabled={time === 0} className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded bg-cyan-700 text-white hover:bg-cyan-600 transition-colors disabled:opacity-50 disabled:bg-indigo-900 border border-cyan-500 shadow-sm">
+                <PlayIcon />
+              </button>
+            ) : (
+              <button onClick={stopTimer} className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded bg-amber-600 text-white hover:bg-amber-500 transition-colors border border-amber-400 shadow-sm">
+                <PauseIcon />
+              </button>
+            )}
+            <button onClick={onDelete} className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded bg-red-900/90 text-red-200 hover:bg-red-700 hover:text-white transition-colors border border-red-700 shadow-sm">
+              <TrashIcon />
+            </button>
+          </div>
+        )}
+
         <button
           onClick={() => setIsMinimized(!isMinimized)}
-          className="text-indigo-300 hover:text-white font-bold transition-colors bg-indigo-950/80 px-3 py-1.5 sm:px-4 sm:py-2 rounded-md border border-indigo-600/50 hover:bg-indigo-700 hover:border-indigo-400 text-xs sm:text-sm shadow-md"
+          className="text-indigo-300 hover:text-white font-bold transition-colors bg-indigo-950/80 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-md border border-indigo-600/50 hover:bg-indigo-700 hover:border-indigo-400 text-[0.65rem] sm:text-sm shadow-md whitespace-nowrap"
         >
           {isMinimized ? "▼ CONFIG" : "▲ OCULTAR"}
         </button>
       </div>
 
-      {/* VISTA MINIMIZADA (NÚMEROS MÁS COMPACTOS) */}
+      {/* VISTA MINIMIZADA (NÚMEROS SOLOS) */}
       <div className={`transition-all duration-300 overflow-hidden ${isMinimized ? 'opacity-100 max-h-[300px] mt-2' : 'opacity-0 max-h-0'}`}>
-        <div className="flex flex-row items-center justify-between gap-4 bg-black/40 p-4 rounded-xl border border-indigo-800/50">
-
-          <div className={`font-mono font-black tracking-tighter tabular-nums ${timerDisplayColor} text-5xl sm:text-6xl lg:text-7xl leading-none flex-grow text-center`}>
+        <div className="flex flex-row items-center justify-center bg-black/40 p-4 rounded-xl border border-indigo-800/50">
+          <div className={`font-mono font-black tracking-tighter tabular-nums ${timerDisplayColor} text-6xl sm:text-8xl lg:text-9xl leading-none text-center`}>
             {formatTime(time)}
-          </div>
-
-          <div className="flex flex-col gap-2 justify-center bg-indigo-950/60 p-2 rounded-xl border border-indigo-800/50">
-            {!isRunning ? (
-              <button onClick={startTimer} disabled={time === 0} className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-lg bg-cyan-700 text-white hover:bg-cyan-600 transition-colors disabled:opacity-50 disabled:bg-indigo-900 border border-cyan-500 shadow-sm">
-                <PlayIcon />
-              </button>
-            ) : (
-              <button onClick={stopTimer} className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-lg bg-amber-600 text-white hover:bg-amber-500 transition-colors border border-amber-400 shadow-sm">
-                <PauseIcon />
-              </button>
-            )}
-            <button onClick={onDelete} className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-lg bg-red-900/90 text-red-200 hover:bg-red-700 hover:text-white transition-colors border border-red-700 shadow-sm">
-              <TrashIcon />
-            </button>
           </div>
         </div>
       </div>
@@ -271,39 +274,42 @@ const Stopwatch = ({ onDelete }: StopwatchProps) => {
   return (
     <div className="relative rounded-xl p-4 sm:p-5 h-auto flex flex-col border border-indigo-700/80 shadow-xl w-full bg-indigo-900/80">
 
-      <div className="flex justify-between items-center mb-3">
-        <div className="font-bold text-green-300/90 truncate pr-4 flex-grow text-lg sm:text-2xl tracking-wide uppercase">
+      <div className="flex justify-between items-center mb-3 gap-2">
+        <div className="font-bold text-green-300/90 truncate pr-2 flex-grow text-base sm:text-xl tracking-wide uppercase">
           {name || "CRONÓMETRO"}
         </div>
+
+        {/* Controles en el encabezado (visibles solo cuando está minimizado) */}
+        {isMinimized && (
+          <div className="flex flex-row gap-1 sm:gap-2 justify-center bg-indigo-950/40 p-1 sm:p-1.5 rounded-lg border border-indigo-800/30">
+            {!isRunning ? (
+              <button onClick={startStopwatch} className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded bg-green-700 text-white hover:bg-green-600 transition-colors border border-green-500 shadow-sm">
+                <PlayIcon />
+              </button>
+            ) : (
+              <button onClick={stopStopwatch} className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded bg-amber-600 text-white hover:bg-amber-500 transition-colors border border-amber-400 shadow-sm">
+                <PauseIcon />
+              </button>
+            )}
+            <button onClick={onDelete} className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded bg-red-900/90 text-red-200 hover:bg-red-700 hover:text-white transition-colors border border-red-700 shadow-sm">
+              <TrashIcon />
+            </button>
+          </div>
+        )}
+
         <button
           onClick={() => setIsMinimized(!isMinimized)}
-          className="text-indigo-300 hover:text-white font-bold transition-colors bg-indigo-950/80 px-3 py-1.5 sm:px-4 sm:py-2 rounded-md border border-indigo-600/50 hover:bg-indigo-700 hover:border-indigo-400 text-xs sm:text-sm shadow-md"
+          className="text-indigo-300 hover:text-white font-bold transition-colors bg-indigo-950/80 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-md border border-indigo-600/50 hover:bg-indigo-700 hover:border-indigo-400 text-[0.65rem] sm:text-sm shadow-md whitespace-nowrap"
         >
           {isMinimized ? "▼ CONFIG" : "▲ OCULTAR"}
         </button>
       </div>
 
-      {/* VISTA MINIMIZADA */}
+      {/* VISTA MINIMIZADA (NÚMEROS SOLOS) */}
       <div className={`transition-all duration-300 overflow-hidden ${isMinimized ? 'opacity-100 max-h-[300px] mt-2' : 'opacity-0 max-h-0'}`}>
-        <div className="flex flex-row items-center justify-between gap-4 bg-black/40 p-4 rounded-xl border border-indigo-800/50">
-
-          <div className="font-mono font-black tracking-tighter tabular-nums text-green-400 text-5xl sm:text-6xl lg:text-7xl leading-none flex-grow text-center">
+        <div className="flex flex-row items-center justify-center bg-black/40 p-4 rounded-xl border border-indigo-800/50">
+          <div className="font-mono font-black tracking-tighter tabular-nums text-green-400 text-6xl sm:text-8xl lg:text-9xl leading-none text-center">
             {formatTime(time)}
-          </div>
-
-          <div className="flex flex-col gap-2 justify-center bg-indigo-950/60 p-2 rounded-xl border border-indigo-800/50">
-            {!isRunning ? (
-              <button onClick={startStopwatch} className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-lg bg-green-700 text-white hover:bg-green-600 transition-colors border border-green-500 shadow-sm">
-                <PlayIcon />
-              </button>
-            ) : (
-              <button onClick={stopStopwatch} className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-lg bg-amber-600 text-white hover:bg-amber-500 transition-colors border border-amber-400 shadow-sm">
-                <PauseIcon />
-              </button>
-            )}
-            <button onClick={onDelete} className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-lg bg-red-900/90 text-red-200 hover:bg-red-700 hover:text-white transition-colors border border-red-700 shadow-sm">
-              <TrashIcon />
-            </button>
           </div>
         </div>
       </div>
