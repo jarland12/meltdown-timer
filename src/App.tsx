@@ -49,7 +49,7 @@ const Timer = ({ onDelete }: TimerProps) => {
   const [seconds, setSeconds] = useState(0);
   const [isWarning, setIsWarning] = useState(false);
   const [warningIntensity, setWarningIntensity] = useState(0);
-  const [isMinimized, setIsMinimized] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(true);
 
   useEffect(() => {
     let interval: ReturnType<typeof setInterval>;
@@ -252,7 +252,7 @@ const Stopwatch = ({ onDelete }: StopwatchProps) => {
   const [name, setName] = useState('');
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
-  const [isMinimized, setIsMinimized] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(true);
 
   useEffect(() => {
     let interval: ReturnType<typeof setInterval>;
@@ -370,24 +370,26 @@ const App = () => {
     <div className="min-h-screen bg-slate-950 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-950 via-gray-900 to-black p-3 sm:p-5 overflow-y-auto w-full">
       <div className="mx-auto w-full flex flex-col items-center max-w-5xl">
 
-        {/* Encabezado Principal Más Compacto */}
-        <div className="flex flex-col xl:flex-row justify-between items-center mb-6 gap-4 w-full">
-          <div className="bg-indigo-950/80 rounded-2xl p-4 sm:p-5 border border-indigo-600/50 flex flex-col sm:flex-row items-center shadow-lg w-full xl:w-auto justify-center">
+        {/* Encabezado Principal Orientado a 720p (Vertical) */}
+        <div className="flex flex-row justify-between items-center mb-5 gap-3 w-full bg-indigo-950/80 rounded-2xl p-3 sm:p-4 border border-indigo-600/50 shadow-md flex-wrap sm:flex-nowrap">
+          {/* Logo y Letrero */}
+          <div className="flex flex-row items-center justify-start flex-shrink-0">
             <Logo />
-            <div className="mt-3 sm:mt-0 sm:ml-5 text-center sm:text-left">
-              <h1 className="text-3xl sm:text-4xl font-mono font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 via-cyan-300 to-indigo-400 tracking-widest drop-shadow-sm leading-none">MELTDOWN</h1>
-              <p className="text-indigo-400/90 text-xs sm:text-sm font-mono uppercase tracking-[0.2em] font-bold mt-1">Gestor de Tiempo</p>
+            <div className="hidden min-[400px]:block ml-3 sm:ml-4 text-left">
+              <h1 className="text-xl sm:text-3xl font-mono font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 via-cyan-300 to-indigo-400 tracking-widest drop-shadow-sm leading-none m-0">MELTDOWN</h1>
+              <p className="text-indigo-400/90 text-[0.6rem] sm:text-xs font-mono uppercase tracking-[0.1em] font-bold mt-0.5">Gestor de Tiempo</p>
             </div>
           </div>
 
-          <div className="flex flex-row w-full xl:w-auto gap-3 shrink-0 h-auto self-stretch">
-            <button onClick={addTimer} className="flex-1 flex flex-col items-center justify-center gap-1 bg-gradient-to-b from-cyan-900/90 to-indigo-900/90 text-cyan-100 p-3 sm:p-4 rounded-2xl border border-cyan-800/80 hover:from-cyan-800 hover:to-indigo-800 hover:shadow-lg transition-colors">
-              <span className="text-2xl sm:text-3xl font-black leading-none bg-black/40 rounded-full w-10 h-10 flex items-center justify-center">+</span>
-              <span className="text-xs sm:text-sm font-bold tracking-wider uppercase text-center leading-tight mt-1">Temporizador</span>
+          {/* Botones Acoplados Arriba */}
+          <div className="flex flex-row flex-grow justify-end gap-2 sm:gap-3 shrink-0 h-auto">
+            <button onClick={addTimer} className="flex-1 max-w-[140px] flex flex-row items-center justify-center gap-1.5 bg-gradient-to-b from-cyan-900/90 to-indigo-900/90 text-cyan-100 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl border border-cyan-800/80 hover:from-cyan-800 hover:to-indigo-800 hover:shadow-md transition-colors w-full">
+              <span className="text-lg sm:text-xl font-black leading-none bg-black/40 rounded-full w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center">+</span>
+              <span className="text-[0.65rem] sm:text-xs font-bold tracking-widest uppercase leading-tight">Reloj</span>
             </button>
-            <button onClick={addStopwatch} className="flex-1 flex flex-col items-center justify-center gap-1 bg-gradient-to-b from-green-900/90 to-indigo-900/90 text-green-100 p-3 sm:p-4 rounded-2xl border border-green-800/80 hover:from-green-800 hover:to-indigo-800 hover:shadow-lg transition-colors">
-              <span className="text-2xl sm:text-3xl font-black leading-none bg-black/40 rounded-full w-10 h-10 flex items-center justify-center">+</span>
-              <span className="text-xs sm:text-sm font-bold tracking-wider uppercase text-center leading-tight mt-1">Cronómetro</span>
+            <button onClick={addStopwatch} className="flex-1 max-w-[140px] flex flex-row items-center justify-center gap-1.5 bg-gradient-to-b from-green-900/90 to-indigo-900/90 text-green-100 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl border border-green-800/80 hover:from-green-800 hover:to-indigo-800 hover:shadow-md transition-colors w-full">
+              <span className="text-lg sm:text-xl font-black leading-none bg-black/40 rounded-full w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center">+</span>
+              <span className="text-[0.65rem] sm:text-xs font-bold tracking-widest uppercase leading-tight">Crono</span>
             </button>
           </div>
         </div>
